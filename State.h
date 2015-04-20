@@ -27,7 +27,12 @@ public:
 	bool getDirection(char input) { return directions[input]; }
 
 	//get the output
-	char getOutput(char input) { return outputs[input]; }
+	char getOutput(char input) { 
+		if (nextState.find(input) != nextState.end())
+			return outputs[input];
+		else
+			return '!';
+	}
 
 private:
 	//The following correspond to to each input using the map

@@ -33,7 +33,10 @@ bool TuringMachine::advance()
 	char input = mOutput[mPos]; 
 
 	//change the char at the head location
-	mOutput[mPos] = mStates[mHead].getOutput(input);
+	if (mStates[mHead].getOutput(input) != '!')
+		mOutput[mPos] = mStates[mHead].getOutput(input);
+	else
+		return false; 
 
 	//move the head
 	if (mStates[mHead].getDirection(input))
